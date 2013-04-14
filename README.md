@@ -42,6 +42,38 @@ test('addAsync returns the sum.', cases([
 }));
 ```
 
+### Non-inline test cases
+
+Instead of providing all the test cases as inline data, you can alternatively specify a function that returns the test cases. This way you can load your test data from a file, a database or any other data source.
+
+```javascript
+test('add returns the sum.', cases(function () {
+  return [
+    [ 23, 42, 65 ],
+    [ 12, 17, 29 ]
+  ];
+}, function (first, second, expected) {
+  var actual = add(first, second);
+  assert.that(actual, is.equalTo(expected));
+}));
+```
+
+This also works for asynchronous test functions. Please note that the function that gets the test cases must be synchronous nevertheless.
+
+```javascript
+test('add returns the sum.', cases(function () {
+  return [
+    [ 23, 42, 65 ],
+    [ 12, 17, 29 ]
+  ];
+}, function (first, second, expected, done) {
+  addAsync(first, second, function (actual) {
+    assert.that(actual, is.equalTo(expected));
+    done();
+  });
+}));
+```
+
 ## Running the tests
 
 cases has been developed using TDD. To run the tests, go to the folder where you have installed cases to and run `npm test`. You need to have [mocha](https://github.com/visionmedia/mocha) installed.

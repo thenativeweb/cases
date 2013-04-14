@@ -24,27 +24,58 @@ suite('cases', function () {
       assert.that(actual.length, is.equalTo(0));
     });
 
-    test('returns a function that runs one test case.', function () {
-      var result = 0;
-      var actual = cases([
-        [ 23 ]
-      ], function (input) {
-        result += input;
+    suite('inline data', function () {
+      test('returns a function that runs one test case.', function () {
+        var result = 0;
+        var actual = cases([
+          [ 23 ]
+        ], function (input) {
+          result += input;
+        });
+        actual();
+        assert.that(result, is.equalTo(23));
       });
-      actual();
-      assert.that(result, is.equalTo(23));
+
+      test('returns a function that runs multiple test cases.', function () {
+        var result = 0;
+        var actual = cases([
+          [ 23 ],
+          [ 42 ]
+        ], function (input) {
+          result += input;
+        });
+        actual();
+        assert.that(result, is.equalTo(65));
+      });
     });
 
-    test('returns a function that runs multiple test cases.', function () {
-      var result = 0;
-      var actual = cases([
-        [ 23 ],
-        [ 42 ]
-      ], function (input) {
-        result += input;
+    suite('function data', function () {
+      test('returns a function that runs one test case.', function () {
+        var result = 0;
+        var actual = cases(function () {
+          return [
+            [ 23 ]
+          ];
+        }, function (input) {
+          result += input;
+        });
+        actual();
+        assert.that(result, is.equalTo(23));
       });
-      actual();
-      assert.that(result, is.equalTo(65));
+
+      test('returns a function that runs multiple test cases.', function () {
+        var result = 0;
+        var actual = cases(function () {
+          return [
+            [ 23 ],
+            [ 42 ]
+          ];
+        }, function (input) {
+          result += input;
+        });
+        actual();
+        assert.that(result, is.equalTo(65));
+      });
     });
   });
 
@@ -61,32 +92,69 @@ suite('cases', function () {
       assert.that(actual.length, is.equalTo(1));
     });
 
-    test('returns a function that runs one test case.', function (done) {
-      var result = 0;
-      var actual = cases([
-        [ 23 ]
-      ], function (input, done) {
-        result += input;
-        done();
+    suite('inline data', function () {
+      test('returns a function that runs one test case.', function (done) {
+        var result = 0;
+        var actual = cases([
+          [ 23 ]
+        ], function (input, done) {
+          result += input;
+          done();
+        });
+        actual(function () {
+          assert.that(result, is.equalTo(23));
+          done();
+        });
       });
-      actual(function () {
-        assert.that(result, is.equalTo(23));
-        done();
+
+      test('returns a function that runs multiple test cases.', function (done) {
+        var result = 0;
+        var actual = cases([
+          [ 23 ],
+          [ 42 ]
+        ], function (input, done) {
+          result += input;
+          done();
+        });
+        actual(function () {
+          assert.that(result, is.equalTo(65));
+          done();
+        });
       });
     });
 
-    test('returns a function that runs multiple test cases.', function (done) {
-      var result = 0;
-      var actual = cases([
-        [ 23 ],
-        [ 42 ]
-      ], function (input, done) {
-        result += input;
-        done();
+    suite('function data', function () {
+      test('returns a function that runs one test case.', function (done) {
+        var result = 0;
+        var actual = cases(function () {
+          return [
+            [ 23 ]
+          ];
+        }, function (input, done) {
+          result += input;
+          done();
+        });
+        actual(function () {
+          assert.that(result, is.equalTo(23));
+          done();
+        });
       });
-      actual(function () {
-        assert.that(result, is.equalTo(65));
-        done();
+
+      test('returns a function that runs multiple test cases.', function (done) {
+        var result = 0;
+        var actual = cases(function () {
+          return [
+            [ 23 ],
+            [ 42 ]
+          ];
+        }, function (input, done) {
+          result += input;
+          done();
+        });
+        actual(function () {
+          assert.that(result, is.equalTo(65));
+          done();
+        });
       });
     });
   });

@@ -1,6 +1,6 @@
 {
   "name": "cases",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "cases provides parameterized unit tests for Mocha.",
   "author": "Golo Roden <webmaster@goloroden.de> (http://www.goloroden.de)",
   "main": "./lib/cases",
