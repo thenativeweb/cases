@@ -2,17 +2,20 @@
   "name": "cases",
   "version": "0.0.2",
   "description": "cases provides parameterized unit tests for Mocha.",
-  "author": "Golo Roden <webmaster@goloroden.de> (http://www.goloroden.de)",
-  "main": "./lib/cases",
+  "contributors": [
+    {
+      "name": "Golo Roden",
+      "email": "golo.roden@thenativeweb.io"
+    }
+  ],
+  "main": "./lib/cases.js",
   "dependencies": {
-    "async": "0.2.6"
+    "async": "0.9.0"
   },
   "devDependencies": {
-    "grunt": "0.4.0",
-    "grunt-contrib-jshint": "0.1.1",
-    "grunt-contrib-watch": "0.2.0",
-    "grunt-mocha-test": "0.2.0",
-    "node-assertthat": "0.0.18"
+    "grunt": "0.4.5",
+    "node-assertthat": "0.2.0",
+    "tourism": "0.1.0"
   },
   "scripts": {
     "test": "mocha"
@@ -20,5 +23,6 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/goloroden/cases.git"
-  }
+  },
+  "license": "MIT"
 }
