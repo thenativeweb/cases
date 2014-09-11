@@ -1,2 +1,4 @@
---ui tdd
+--bail
+--recursive
 --reporter spec
+--ui tdd
