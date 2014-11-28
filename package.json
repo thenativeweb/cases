@@ -14,8 +14,8 @@
   },
   "devDependencies": {
     "grunt": "0.4.5",
-    "node-assertthat": "0.2.0",
-    "tourism": "0.6.1"
+    "node-assertthat": "0.2.2",
+    "tourism": "0.9.3"
   },
   "scripts": {
     "test": "mocha"
