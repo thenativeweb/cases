@@ -5,27 +5,29 @@ var assert = require('node-assertthat');
 var cases = require('../lib/cases');
 
 suite('cases', function () {
-  test('returns a function.', function () {
+  test('returns a function.', function (done) {
     var actual = cases([
       [ 23 ]
     ], function (input) {
       input++;
     });
     assert.that(actual, is.ofType('function'));
+    done();
   });
 
   suite('synchronous', function () {
-    test('returns a function without parameters.', function () {
+    test('returns a function without parameters.', function (done) {
       var actual = cases([
         [ 23 ]
       ], function (input) {
         input++;
       });
       assert.that(actual.length, is.equalTo(0));
+      done();
     });
 
     suite('inline data', function () {
-      test('returns a function that runs one test case.', function () {
+      test('returns a function that runs one test case.', function (done) {
         var result = 0;
         var actual = cases([
           [ 23 ]
@@ -34,9 +36,10 @@ suite('cases', function () {
         });
         actual();
         assert.that(result, is.equalTo(23));
+        done();
       });
 
-      test('returns a function that runs multiple test cases.', function () {
+      test('returns a function that runs multiple test cases.', function (done) {
         var result = 0;
         var actual = cases([
           [ 23 ],
@@ -46,11 +49,12 @@ suite('cases', function () {
         });
         actual();
         assert.that(result, is.equalTo(65));
+        done();
       });
     });
 
     suite('function data', function () {
-      test('returns a function that runs one test case.', function () {
+      test('returns a function that runs one test case.', function (done) {
         var result = 0;
         var actual = cases(function () {
           return [
@@ -61,9 +65,10 @@ suite('cases', function () {
         });
         actual();
         assert.that(result, is.equalTo(23));
+        done();
       });
 
-      test('returns a function that runs multiple test cases.', function () {
+      test('returns a function that runs multiple test cases.', function (done) {
         var result = 0;
         var actual = cases(function () {
           return [
@@ -75,12 +80,13 @@ suite('cases', function () {
         });
         actual();
         assert.that(result, is.equalTo(65));
+        done();
       });
     });
   });
 
   suite('asynchronous', function () {
-    test('returns a function with one parameter.', function () {
+    test('returns a function with one parameter.', function (done) {
       var actual = cases([
         [ 23 ]
       ], function (input, done) {
@@ -90,6 +96,7 @@ suite('cases', function () {
         }, 100);
       });
       assert.that(actual.length, is.equalTo(1));
+      done();
     });
 
     suite('inline data', function () {
