@@ -1,6 +1,6 @@
 'use strict';
 
-var assert = require('node-assertthat');
+var assert = require('assertthat');
 
 var cases = require('../lib/cases');
 
@@ -11,7 +11,7 @@ suite('cases', function () {
     ], function (input) {
       input++;
     });
-    assert.that(actual, is.ofType('function'));
+    assert.that(actual).is.ofType('function');
     done();
   });
 
@@ -22,7 +22,7 @@ suite('cases', function () {
       ], function (input) {
         input++;
       });
-      assert.that(actual.length, is.equalTo(0));
+      assert.that(actual.length).is.equalTo(0);
       done();
     });
 
@@ -35,7 +35,7 @@ suite('cases', function () {
           result += input;
         });
         actual();
-        assert.that(result, is.equalTo(23));
+        assert.that(result).is.equalTo(23);
         done();
       });
 
@@ -48,7 +48,7 @@ suite('cases', function () {
           result += input;
         });
         actual();
-        assert.that(result, is.equalTo(65));
+        assert.that(result).is.equalTo(65);
         done();
       });
     });
@@ -64,7 +64,7 @@ suite('cases', function () {
           result += input;
         });
         actual();
-        assert.that(result, is.equalTo(23));
+        assert.that(result).is.equalTo(23);
         done();
       });
 
@@ -79,7 +79,7 @@ suite('cases', function () {
           result += input;
         });
         actual();
-        assert.that(result, is.equalTo(65));
+        assert.that(result).is.equalTo(65);
         done();
       });
     });
@@ -89,13 +89,13 @@ suite('cases', function () {
     test('returns a function with one parameter.', function (done) {
       var actual = cases([
         [ 23 ]
-      ], function (input, done) {
+      ], function (input, doneCases) {
         setTimeout(function () {
           input++;
-          done();
+          doneCases();
         }, 100);
       });
-      assert.that(actual.length, is.equalTo(1));
+      assert.that(actual.length).is.equalTo(1);
       done();
     });
 
@@ -104,12 +104,12 @@ suite('cases', function () {
         var result = 0;
         var actual = cases([
           [ 23 ]
-        ], function (input, done) {
+        ], function (input, doneCases) {
           result += input;
-          done();
+          doneCases();
         });
         actual(function () {
-          assert.that(result, is.equalTo(23));
+          assert.that(result).is.equalTo(23);
           done();
         });
       });
@@ -119,12 +119,12 @@ suite('cases', function () {
         var actual = cases([
           [ 23 ],
           [ 42 ]
-        ], function (input, done) {
+        ], function (input, doneCases) {
           result += input;
-          done();
+          doneCases();
         });
         actual(function () {
-          assert.that(result, is.equalTo(65));
+          assert.that(result).is.equalTo(65);
           done();
         });
       });
@@ -137,12 +137,12 @@ suite('cases', function () {
           return [
             [ 23 ]
           ];
-        }, function (input, done) {
+        }, function (input, doneCases) {
           result += input;
-          done();
+          doneCases();
         });
         actual(function () {
-          assert.that(result, is.equalTo(23));
+          assert.that(result).is.equalTo(23);
           done();
         });
       });
@@ -154,12 +154,12 @@ suite('cases', function () {
             [ 23 ],
             [ 42 ]
           ];
-        }, function (input, done) {
+        }, function (input, doneCases) {
           result += input;
-          done();
+          doneCases();
         });
         actual(function () {
-          assert.that(result, is.equalTo(65));
+          assert.that(result).is.equalTo(65);
           done();
         });
       });
