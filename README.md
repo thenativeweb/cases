@@ -2,8 +2,6 @@
 
 cases provides parameterized unit tests for Mocha.
 
-[![Circle CI](https://circleci.com/gh/thenativeweb/cases.svg?style=svg)](https://circleci.com/gh/thenativeweb/cases)
-
 ## Installation
 
     $ npm install cases
