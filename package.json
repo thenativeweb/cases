@@ -10,16 +10,20 @@
     {
       "name": "Matthias Wagler",
       "email": "matthias.wagler@thenativeweb.io"
+    },
+    {
+      "name": "Jan-Hendrik Grundhöfer",
+      "email": "jan-hendrik.grundhoefer@thenativeweb.io"
     }
   ],
-  "main": "./lib/cases.js",
+  "main": "dist/cases.js",
   "dependencies": {
-    "async": "0.9.0"
+    "async": "2.6.0"
   },
   "devDependencies": {
-    "assertthat": "0.5.3",
-    "grunt": "0.4.5",
-    "tourism": "0.14.1"
+    "assertthat": "1.0.0",
+    "roboter": "0.15.6",
+    "roboter-server": "0.15.6"
   },
   "scripts": {
     "test": "mocha"
