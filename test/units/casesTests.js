@@ -2,7 +2,7 @@
 
 const assert = require('assertthat');
 
-const cases = require('../../lib/cases');
+const cases = require('../../src/cases');
 
 suite('cases', () => {
   test('returns a function.', done => {

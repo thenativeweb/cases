@@ -18,12 +18,11 @@
   ],
   "main": "dist/cases.js",
   "dependencies": {
-    "async": "2.6.0"
+    "async": "2.6.1"
   },
   "devDependencies": {
-    "assertthat": "1.0.0",
-    "roboter": "0.15.6",
-    "roboter-server": "0.15.6"
+    "assertthat": "2.0.1",
+    "roboter": "3.0.4"
   },
   "scripts": {
     "test": "mocha"
